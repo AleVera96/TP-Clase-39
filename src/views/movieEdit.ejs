@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulario para editar la pelicula</h1>
+    <form action="/movies/update/<%=pelicula.id %>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%=pelicula.title%>" >
+        <% if (locals.errors && locals.errors.title) { %>
+            <div style="color: red;">
+                <%= locals.errors.title.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="0" max="10" step="0.1" 
+        value="<%=pelicula.rating%>" >
+        <% if (locals.errors && locals.errors.rating) { %>
+            <div style="color: red;">
+                <%= locals.errors.rating.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="awards">Awards:</label>
+        <input type="number" id="awards" name="awards" min="0" value="<%=pelicula.awards%>">
+        <% if (locals.errors && locals.errors.awards) { %>
+            <div style="color: red;">
+                <%= locals.errors.awards.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="release_date">Release Date:</label>
+        <input type="date" id="release_date" name="release_date" value="<%=pelicula.release_date%>">
+        <% if (locals.errors && locals.errors.release_date) { %>
+            <div style="color: red;">
+                <%= locals.errors.release_date.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="length">Length (minutes):</label>
+        <input type="number" id="length" name="length" min="1" value="<%=pelicula.length%>">
+        <% if (locals.errors && locals.errors.length) { %>
+            <div style="color: red;">
+                <%= locals.errors.length.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="genre_id">Genero:</label>
+        <select id="genre_id" name="genre_id">
+            <option value="">Seleccionar genero</option>
+            <option value="1" <%= pelicula.genre_id === 1 ? 'selected' : '' %>>Comedia</option>
+            <option value="2" <%= pelicula.genre_id === 2 ? 'selected' : '' %>>Terror</option>
+            <option value="3" <%= pelicula.genre_id === 3 ? 'selected' : '' %>>Drama</option>
+            <option value="4" <%= pelicula.genre_id === 4 ? 'selected' : '' %>>Accion</option>
+            <option value="5" <%= pelicula.genre_id === 5 ? 'selected' : '' %>>Ciencia Ficcion</option>
+            <option value="6" <%= pelicula.genre_id === 6 ? 'selected' : '' %>>Suspenso</option>
+            <option value="7" <%= pelicula.genre_id === 7 ? 'selected' : '' %>>Animacion</option>
+            <option value="8" <%= pelicula.genre_id === 8 ? 'selected' : '' %>>Aventuras</option>
+            <option value="9" <%= pelicula.genre_id === 9 ? 'selected' : '' %>>Documental</option>
+            <option value="10" <%= pelicula.genre_id === 10 ? 'selected' : '' %>>Infantiles</option>
+            <option value="11" <%= pelicula.genre_id === 11 ? 'selected' : '' %>>Fantasia</option>
+            <option value="12" <%= pelicula.genre_id === 12 ? 'selected' : '' %>>Musical</option>
+        </select>
+        <% if (locals.errors && locals.errors.genre_id) { %>
+            <div style="color: red;">
+                <%= locals.errors.genre_id.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <button type="submit">Editar!</button>
+    </form>
+</body>
+</html>

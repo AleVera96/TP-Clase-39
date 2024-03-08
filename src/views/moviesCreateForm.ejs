@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="width: 100%;text-align: center;">Formulario para subir nueva pelicula</h1>
+    <form action="/movies/create" method="post" style="border-style: solid 1px black;width: 50px;text-align: center;position: absolute;right:50%;">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" >
+        <% if (locals.errors && locals.errors.title) { %>
+            <div style="color: red;">
+                <%= locals.errors.title.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="0" max="10" step="0.1" >
+        <% if (locals.errors && locals.errors.rating) { %>
+            <div style="color: red;">
+                <%= locals.errors.rating.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="awards">Awards:</label>
+        <input type="number" id="awards" name="awards" min="0" >
+        <% if (locals.errors && locals.errors.awards) { %>
+            <div style="color: red;">
+                <%= locals.errors.awards.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="release_date">Release Date:</label>
+        <input type="date" id="release_date" name="release_date" >
+        <% if (locals.errors && locals.errors.release_date) { %>
+            <div style="color: red;">
+                <%= locals.errors.release_date.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="length">Length (minutes):</label>
+        <input type="number" id="length" name="length" min="1" >
+        <% if (locals.errors && locals.errors.length) { %>
+            <div style="color: red;">
+                <%= locals.errors.length.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <label for="genre_id">Genre:</label>
+        <select id="genre_id" name="genre_id" >
+            <option value="">Select Genre</option>
+            <option value="1">Comedia</option>
+            <option value="2">Terror</option>
+            <option value="3">Drama</option>
+            <option value="4">Accion</option>
+            <option value="5">Ciencia Ficcion</option>
+            <option value="6">Suspenso</option>
+            <option value="7">Animacion</option>
+            <option value="8">Aventuras</option>
+            <option value="9">Documental</option>
+            <option value="10">Infantiles</option>
+            <option value="11">Fantasia</option>
+            <option value="12">Musical</option>
+        </select>
+        <% if (locals.errors && locals.errors.genre_id) { %>
+            <div style="color: red;">
+                <%= locals.errors.genre_id.msg %>
+            </div>
+        <% } %>
+        <br>
+    
+        <button type="submit" style="margin-top:3%;font-size: 32px;">Submit</button>
+    </form>
+   
+</body>
+</html>
